@@ -34,8 +34,8 @@ func checkRepeatCalculation() bool {
 }
 
 func getUserInputValueEnd(value string) string {
+	usd, rub, eur := "usd", "rub", "eur"
 	for {
-		usd, rub, eur := "usd", "rub", "eur"
 		var userInput string
 		fmt.Printf("Введите конечную валюту (%s,%s,%s) : ", usd, eur, rub)
 		fmt.Scan(&userInput)
@@ -55,8 +55,8 @@ func getUserInputValueEnd(value string) string {
 }
 
 func getUserInputValue() string {
+	usd, rub, eur := "usd", "rub", "eur"
 	for {
-		usd, rub, eur := "usd", "rub", "eur"
 		var userInput string
 		fmt.Printf("Введите исходную валюту (%s,%s,%s) : ", usd, eur, rub)
 		fmt.Scan(&userInput)
