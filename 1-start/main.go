@@ -3,9 +3,11 @@ package main
 import (
 	"errors"
 	"fmt"
+	"strings"
 )
 
 func main() {
+
 	fmt.Println("__Калькулятор валют__")
 	for {
 		value := getUserInputValue()
@@ -99,25 +101,15 @@ func checkNum(userInput float64) (float64, error) {
 }
 
 func output(value string, num float64, value_end string) {
-	const USD_TO_EUR, USD_TO_RUB, EUR_TO_USD, EUR_TO_RUB, RUB_TO_EUR, RUB_TO_USD float64 = 0.88, 81.99, 1.14, 93.23, 0.011, 0.012
-	switch {
-	case value == "usd" && value_end == "eur":
-		sum := num * USD_TO_EUR
-		fmt.Printf("Результат: %.2f\n", sum)
-	case value == "usd" && value_end == "rub":
-		sum := num * USD_TO_RUB
-		fmt.Printf("Результат: %.2f\n", sum)
-	case value == "eur" && value_end == "usd":
-		sum := num * EUR_TO_USD
-		fmt.Printf("Результат: %.2f\n", sum)
-	case value == "eur" && value_end == "rub":
-		sum := num * EUR_TO_RUB
-		fmt.Printf("Результат: %.2f\n", sum)
-	case value == "rub" && value_end == "eur":
-		sum := num * RUB_TO_EUR
-		fmt.Printf("Результат: %.2f\n", sum)
-	case value == "rub" && value_end == "usd":
-		sum := num * RUB_TO_USD
-		fmt.Printf("Результат: %.2f\n", sum)
+	value_s := map[string]float64{
+		"USD_TO_EUR": 0.88,
+		"USD_TO_RUB": 81.99,
+		"EUR_TO_USD": 1.14,
+		"EUR_TO_RUB": 93.23,
+		"RUB_TO_EUR": 0.011,
+		"RUB_TO_USD": 0.012,
 	}
+	res := strings.ToUpper(value) + "_TO_" + strings.ToUpper(value_end)
+	result := value_s[res] * num
+	fmt.Println(result)
 }
